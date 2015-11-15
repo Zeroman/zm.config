@@ -13,10 +13,8 @@ cp_and_backup_file()
     test -z "$src" && return
     test -z "$dst" && return 
 
-    if [ -e "$dst" ];then
-        mv $dst ${dst}.old
-        cp -afv $src $dst
-    fi
+    mv $dst ${dst}.old
+    cp -afv $src $dst
 }
 
 cp_and_backup_file .vimrc $HOME/.vimrc
