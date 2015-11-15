@@ -43,6 +43,7 @@ if isdirectory(glob("~/.vim/bundle/vundle"))
     Plugin 'pydoc.vim'
     Plugin 'ShowMarks'
     Plugin 'Auto-Pairs'
+    Plugin 'vcscommand'
     " Plugin 'taglist.vim'
     " Plugin 'gmarik/vundle'
     Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
@@ -66,7 +67,6 @@ if isdirectory(glob("~/.vim/bundle/vundle"))
     Plugin 'Yggdroot/indentLine.git'
     Plugin 'code_complete-new-update'
     Plugin 'skammer/vim-css-color.git'
-    Plugin 'git://repo.or.cz/vcscommand'
     Plugin 'scrooloose/nerdcommenter.git'
 
     " Plugin "Lokaltog/vim-powerline"
@@ -684,7 +684,7 @@ let g:showmarks_include="abcdefghijklmnopqrstuvwxyz"
 " let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
 """" for neocomplcache
-if exists('g:loaded_neocomplcache')
+if isdirectory(glob("~/.vim/bundle/neocomplcache"))
 	" Disable AutoComplPop.
 	let g:acp_enableAtStartup = 0
 	" Use neocomplcache.
@@ -842,9 +842,11 @@ let VCSCommandMapPrefix='<Leader>v'
 
 
 """" for tagbar
-nnoremap <silent> <M-l> :TagbarToggle<CR>
-let g:tagbar_singleclick = 1
-autocmd BufEnter * nested :call tagbar#autoopen(0)
+if isdirectory(glob("~/.vim/bundle/tagbar"))
+    nnoremap <silent> <M-l> :TagbarToggle<CR>
+    let g:tagbar_singleclick = 1
+    autocmd BufEnter * nested :call tagbar#autoopen(0)
+endif
 
 
 """" for NerdComment

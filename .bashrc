@@ -172,7 +172,7 @@ alias tags='ctags -R;cscope -bkqR'
 alias tagsclean='/bin/rm ./cscope.*;/bin/rm ./tags'
 alias alltagsclean='find . -name tags -o -name cscope.* | xargs /bin/rm'
 
-_SUDO=`which sudo`
+_SUDO=$(which sudo > /dev/null 2>&1)
 if [ -e /etc/debian_version ]; then
     alias si='$_SUDO aptitude install'
     alias sr='$_SUDO aptitude remove'
