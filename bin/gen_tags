@@ -1,0 +1,47 @@
+#!/bin/bash - 
+
+FIND='/usr/bin/find'
+CTAGS='/usr/bin/ctags --c++-kinds=+p --c-kinds=+px-n --fields=+iatfS --extra=+q -I __wur,__THROW,__nonnull+'
+CSCOPE='/usr/bin/cscope -bkq' 
+
+cur_dir=$(readlink -f .)
+
+find_file_list()
+{
+    find_dir=$1
+    file_list=$2
+    $FIND $find_dir -type f -name '*.h' >> $file_list
+    $FIND $find_dir -type f -name '*.c' >> $file_list
+    $FIND $find_dir -type f -name '*.cpp' >> $file_list
+}
+
+tags_target=tags
+cscope_target=cscope.out
+if [ $# -gt 0 ];then
+    if [ ! -d $1 ];then
+        tag_name=$1
+        tags_target=${tag_name}.tags
+        cscope_target=${tag_name}.out
+        shift
+    fi
+fi
+
+temp_list=$(mktemp)
+find_file_list $cur_dir $temp_list
+
+while [ $# -gt 0 ]
+do
+    if [ -d $1 ];then
+        find_file_list $1 $temp_list
+    fi
+    shift
+done
+
+
+echo "generate $tags_target..."
+$CTAGS -L $temp_list -f $tags_target
+echo "generate $cscope_target"
+$CSCOPE -i$temp_list -f${cscope_target}
+rm -f $temp_list
+
+ls -lh $tags_target $cscope_target

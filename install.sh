@@ -22,6 +22,10 @@ cp_and_backup_file()
 cp_and_backup_file .vimrc $HOME/.vimrc
 cp_and_backup_file .bashrc $HOME/.bashrc
 
+mkdir -p $HOME/bin
+cp_and_backup_file bin/gen_tags $HOME/bin
+chmod +x $HOME/bin/gen_tags
+
 if [ ! -d "$HOME/.vim/bundle/vundle" ];then
     git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git $HOME/.vim/bundle/vundle
 fi
