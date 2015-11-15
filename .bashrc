@@ -199,10 +199,15 @@ if which zm > /dev/null;then
 fi
 
 if [ $_IN_XWIN = 1 ];then
-    alias v='gvim -p'
-    alias V='gvim -p'
-    alias vcp='gvim -p --cmd "let g:ycp_on=1"'
-    export EDITOR=gvim
+    if which $VIM > /dev/null;then
+        alias v='gvim -p'
+        alias vcp='gvim -p --cmd "let g:ycp_on=1"'
+        export EDITOR=gvim
+    else
+        alias v='vim -p'
+        alias vcp='vim -p --cmd "let g:ycp_on=1"'
+        export EDITOR=vim
+    fi
 else
     alias v='vim -p'
     alias V='vim -p'
