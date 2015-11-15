@@ -23,7 +23,7 @@ cp_and_backup_file .vimrc $HOME/.vimrc
 cp_and_backup_file .bashrc $HOME/.bashrc
 
 mkdir -p $HOME/bin
-cp_and_backup_file bin/gen_tags $HOME/bin
+cp_and_backup_file bin/gen_tags $HOME/bin/gen_tags
 chmod +x $HOME/bin/gen_tags
 
 if [ ! -d "$HOME/.vim/bundle/vundle" ];then
