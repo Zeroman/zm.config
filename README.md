@@ -1,0 +1,2 @@
+# zm.config
+vimrc bashrc 
