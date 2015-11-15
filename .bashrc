@@ -253,17 +253,13 @@ show_version_string()
     fi
 }
 
-case $cur_shell in
-    bash)
-        if [ $(whoami) == "root" ];then
-            export PS1='\[\e[31;40m\]`show_version_string`\[\e[0m\]\[\e[1;31m\]\W\[\e[0m\]-> '
-        else
-            export PS1='\[\e[32;40m\]`show_version_string`\[\e[0m\]\[\e[1;32m\]\W\[\e[0m\]-> '
-        fi
-        # export PS1='\u:\W \033[1;36m$(__git_ps1 "%s")\033[0m->'
-        # PS1='`a=$?;if [ $a -ne 0 ]; then echo -n -e "\[\e[01;32;41m\]{$a}"; fi`\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W`B=$(git branch 2>/dev/null | sed -e "/^ /d" -e "s/* \(.*\)/\1/"); if [ "$B" != "" ]; then S="git"; elif [ -e .bzr ]; then S=bzr; elif [ -e .hg ]; then S="hg"; elif [ -e .svn ]; then S="svn"; else S=""; fi; if [ "$S" != "" ]; then if [ "$B" != "" ]; then M=$S:$B; else M=$S; fi; fi; [[ "$M" != "" ]] && echo -n -e "\[\e[33;40m\]($M)\[\033[01;32m\]\[\e[00m\]"`\[\033[01;34m\] $ \[\e[00m\]'
-        ;;
-esac
+if [ $(whoami) == "root" ];then
+    export PS1='\[\e[31;40m\]`show_version_string`\[\e[0m\]\[\e[1;31m\]\W\[\e[0m\]-> '
+else
+    export PS1='\[\e[32;40m\]`show_version_string`\[\e[0m\]\[\e[1;32m\]\W\[\e[0m\]-> '
+fi
+# export PS1='\u:\W \033[1;36m$(__git_ps1 "%s")\033[0m->'
+# PS1='`a=$?;if [ $a -ne 0 ]; then echo -n -e "\[\e[01;32;41m\]{$a}"; fi`\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W`B=$(git branch 2>/dev/null | sed -e "/^ /d" -e "s/* \(.*\)/\1/"); if [ "$B" != "" ]; then S="git"; elif [ -e .bzr ]; then S=bzr; elif [ -e .hg ]; then S="hg"; elif [ -e .svn ]; then S="svn"; else S=""; fi; if [ "$S" != "" ]; then if [ "$B" != "" ]; then M=$S:$B; else M=$S; fi; fi; [[ "$M" != "" ]] && echo -n -e "\[\e[33;40m\]($M)\[\033[01;32m\]\[\e[00m\]"`\[\033[01;34m\] $ \[\e[00m\]'
 
 export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export OOO_FORCE_DESKTOP=gtk3
@@ -326,11 +322,7 @@ function _apparix_aliases ()
 }
 # command to register the above to expand when the 'to' command's args are
 # being expanded
-case $cur_shell in
-    bash)
-        complete -F _apparix_aliases to
-        ;;
-esac
+complete -F _apparix_aliases to
 
 
 ### for other modules
