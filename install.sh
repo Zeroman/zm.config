@@ -13,18 +13,37 @@ cp_and_backup_file()
     test -z "$src" && return
     test -z "$dst" && return 
 
-    mv $dst ${dst}.old
+    mkdir -p $(dirname $dst)
+    test -e $dst && mv $dst ${dst}.old
     cp -afv $src $dst
 }
 
-cp_and_backup_file .vimrc $HOME/.vimrc
-cp_and_backup_file .bashrc $HOME/.bashrc
+install_all()
+{
+    author="$1"
+    mail="$2"
 
-mkdir -p $HOME/bin
-cp_and_backup_file bin/gen_tags $HOME/bin/gen_tags
-chmod +x $HOME/bin/gen_tags
+    cp_and_backup_file .vimrc $HOME/.vimrc
+    cp_and_backup_file .bashrc $HOME/.bashrc
+    cp_and_backup_file bin/gen_tags $HOME/bin/gen_tags
+    chmod +x $HOME/bin/gen_tags
 
-if [ ! -d "$HOME/.vim/bundle/vundle" ];then
-    git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git $HOME/.vim/bundle/vundle
-fi
-vim -c "BundleInstall"
+    if [ ! -d "$HOME/.vim/bundle/vundle" ];then
+        git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git $HOME/.vim/bundle/vundle
+    fi
+    vim "+BundleInstall" "+quitall"
+
+    sed -i "s#ZM_AUTHOR=.*#ZM_AUTHOR='$author'#g" $HOME/.bashrc
+    sed -i "s#ZM_MAIL=.*#ZM_MAIL='$mail'#g" $HOME/.bashrc
+    source $HOME/.bashrc
+}
+
+err()
+{
+    echo $*
+    exit 1
+}
+
+test -z "$1" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmail.com"
+test -z "$2" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmail.com"
+install_all $1 $2

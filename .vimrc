@@ -18,8 +18,8 @@ endif
 if version <= 700
 endif
 
-let g:mail = "you@mail.com"
-let g:author = "you"
+let g:mail = expand("$ZM_MAIL")
+let g:author = expand("$ZM_AUTHOR")
 
 
 """ Vundle Plugin
@@ -653,7 +653,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " let g:BASH_LocalTemplateFile = $HOME.'/.vim/bash_support_templates'
 
 """" for doxygen
-let g:DoxygenToolkit_authorName="name <you@mail.com>" 
+let g:DoxygenToolkit_authorName=expand("$ZM_AUTHOR <$ZM_MAIL>")
 let g:DoxygenToolkit_versionTag="0.01"
 let g:DoxygenToolkit_commentType = "C++" 
 

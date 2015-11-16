@@ -21,6 +21,8 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
+export ZM_MAIL='51feel@gmail.com'
+export ZM_AUTHOR='Zeroman Yang'
 
 
 ### for history setting
@@ -172,7 +174,7 @@ alias tags='ctags -R;cscope -bkqR'
 alias tagsclean='/bin/rm ./cscope.*;/bin/rm ./tags'
 alias alltagsclean='find . -name tags -o -name cscope.* | xargs /bin/rm'
 
-_SUDO=$(which sudo > /dev/null 2>&1)
+_SUDO=$(which sudo 2>/dev/null)
 if [ -e /etc/debian_version ]; then
     alias si='$_SUDO aptitude install'
     alias sr='$_SUDO aptitude remove'
@@ -193,13 +195,13 @@ elif [ -e /etc/arch-release ];then
 	alias ag='$_SUDO pacman -Syu'
 fi
 
-if which zm > /dev/null;then
+if which zm > /dev/null 2>&1;then
     alias si='zm -i'
     alias ag='zm --install-softs'
 fi
 
 if [ $_IN_XWIN = 1 ];then
-    if which $VIM > /dev/null;then
+    if which gvim > /dev/null 2>&1;then
         alias v='gvim -p'
         alias vcp='gvim -p --cmd "let g:ycp_on=1"'
         export EDITOR=gvim
