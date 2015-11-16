@@ -43,7 +43,7 @@ if isdirectory(glob("~/.vim/bundle/vundle"))
     Plugin 'pydoc.vim'
     Plugin 'ShowMarks'
     Plugin 'Auto-Pairs'
-    Plugin 'vcscommand'
+    Plugin 'vcscommand.vim'
     " Plugin 'taglist.vim'
     " Plugin 'gmarik/vundle'
     Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
