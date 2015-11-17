@@ -416,11 +416,11 @@ endif
 
 """" Moving Around/Editing
 " set nostartofline           " Avoid moving cursor to BOL when jumping around
-"set whichwrap=b,s,h,l,<,>   " <BS> <Space> h l <Left> <Right> can change lines
+" set whichwrap=b,s,h,l,<,>   " <BS> <Space> h l <Left> <Right> can change lines
 set virtualedit=block       " Let cursor move past the last char in <C-v> mode
 set scrolloff=3             " Keep 3 context lines above and below the cursor
-" set backspace=2             " Allow backspacing over autoindent, EOL, and BOL
-" set backspace=eol,start,indent "Set backspace
+set backspace=2             " Allow backspacing over autoindent, EOL, and BOL
+set backspace=eol,start,indent "Set backspace
 set showmatch               " Briefly jump to a paren once it's balanced
 set matchtime=4             " (for only .2 seconds).
 
