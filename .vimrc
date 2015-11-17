@@ -845,7 +845,7 @@ let VCSCommandMapPrefix='<Leader>v'
 if isdirectory(glob("~/.vim/bundle/tagbar"))
     nnoremap <silent> <F4> :TagbarToggle<CR>
     let g:tagbar_singleclick = 1
-    autocmd BufEnter * nested :call tagbar#autoopen(0)
+    autocmd VimEnter * nested :call tagbar#autoopen(1)
 endif
 
 
