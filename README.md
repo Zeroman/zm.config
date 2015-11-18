@@ -6,4 +6,5 @@ vimrc bashrc
 
 # vim 配置 
 
+- F3 打开或关闭注释
 - F4 打开或关闭Tagbar

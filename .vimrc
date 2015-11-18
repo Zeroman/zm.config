@@ -852,8 +852,8 @@ endif
 """" for NerdComment
 let NERDSpaceDelims = 1
 let NERDCompactSexyComs = 1
-nmap <M-m> <plug>NERDCommenterToggle
-vmap <M-m> <plug>NERDCommenterToggle
+nmap <F3> <plug>NERDCommenterToggle
+vmap <F3> <plug>NERDCommenterToggle
 
 
 """" for NERDTree"
