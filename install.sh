@@ -38,6 +38,26 @@ install_all()
     source $HOME/.bashrc
 }
 
+setup_gitconfig()
+{
+    git config --global status.showUntrackedFiles no
+    git config --global user.name "$ZM_AUTHOR"
+    git config --global user.email "$ZM_MAIL"
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.st status
+    git config --global alias.stu status -unormal
+    git config --global alias.df diff
+    git config --global alias.dfn diff --name-only
+    git config --global alias.up pull --rebase
+    git config --global alias.dir rev-parse --show-toplevel
+    git config --global alias.unstage 'reset HEAD --'
+    git config --global alias.last 'log -1 HEAD'
+    git config --global alias.l log --color --graph --decorate --pretty=oneline --abbrev-commit
+    git config --global alias.log log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '
+}
+
 err()
 {
     echo $*
@@ -47,3 +67,4 @@ err()
 test -z "$1" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmail.com"
 test -z "$2" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmail.com"
 install_all $1 $2
+setup_gitconfig
