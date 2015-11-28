@@ -845,7 +845,7 @@ let VCSCommandMapPrefix='<Leader>v'
 if isdirectory(glob("~/.vim/bundle/tagbar"))
     nnoremap <silent> <F4> :TagbarToggle<CR>
     let g:tagbar_singleclick = 1
-    autocmd VimEnter * nested :call tagbar#autoopen(1)
+    " autocmd VimEnter * nested :call tagbar#autoopen(1)
 endif
 
 
@@ -1036,11 +1036,8 @@ map <leader>qq :qa<cr>
 map <leader>qw :wqa<cr>
 map <leader>set :tabedit ~/.vimrc<cr>
 map <leader>sh :tabedit ~/.bashrc<cr>
-map <M-v> "+p
-imap <M-v> "+p
-map <M-c> "+y
-imap <M-c> "+y
-map <M-t> d
+imap <C-v> <ESC>"+p
+vmap <C-c> <ESC>"+y
 
 " Fast remove highlight search
 nmap <silent> <leader><cr> :noh<cr>
