@@ -28,8 +28,8 @@ install_all()
     cp_and_backup_file bin/gen_tags $HOME/bin/gen_tags
     chmod +x $HOME/bin/gen_tags
 
-    if [ ! -d "$HOME/.vim/bundle/vundle" ];then
-        git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git $HOME/.vim/bundle/vundle
+    if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ];then
+        git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
     fi
     vim "+BundleInstall" "+quitall"
 
@@ -50,12 +50,12 @@ setup_gitconfig()
     git config --global alias.stu status -unormal
     git config --global alias.df diff
     git config --global alias.dfn diff --name-only
-    git config --global alias.up pull --rebase
+    git config --global alias.up pull --recurse-submodules=yes
     git config --global alias.dir rev-parse --show-toplevel
     git config --global alias.unstage 'reset HEAD --'
     git config --global alias.last 'log -1 HEAD'
-    git config --global alias.l log --color --graph --decorate --pretty=oneline --abbrev-commit
-    git config --global alias.log log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '
+    git config --global alias.l "log --color --graph --decorate --pretty=oneline --abbrev-commit"
+    git config --global alias.log "log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '"
 }
 
 err()
