@@ -24,12 +24,13 @@ let g:author = expand("$ZM_AUTHOR")
 
 """ Vundle Plugin
 " git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git ~/.vim/bundle/vundle
-if isdirectory(glob("~/.vim/bundle/vundle"))
+" git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     set nocompatible              " be iMproved, required
     filetype off                  " required
 
     " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/vundle
+    set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     " alternatively, pass a path where Vundle should install plugins
     "call vundle#begin('~/some/path/here')
@@ -1036,8 +1037,10 @@ map <leader>qq :qa<cr>
 map <leader>qw :wqa<cr>
 map <leader>set :tabedit ~/.vimrc<cr>
 map <leader>sh :tabedit ~/.bashrc<cr>
-imap <C-v> <ESC>"+p
-vmap <C-c> <ESC>"+y
+imap <C-v> <ESC>"+pi
+nmap <C-v> "+p
+vmap <C-c> "+y
+
 
 " Fast remove highlight search
 nmap <silent> <leader><cr> :noh<cr>
