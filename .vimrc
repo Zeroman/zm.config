@@ -1037,8 +1037,7 @@ map <leader>qq :qa<cr>
 map <leader>qw :wqa<cr>
 map <leader>set :tabedit ~/.vimrc<cr>
 map <leader>sh :tabedit ~/.bashrc<cr>
-imap <C-v> <ESC>"+pi
-nmap <C-v> "+p
+imap <C-v> <ESC>"+pa
 vmap <C-c> "+y
 
 

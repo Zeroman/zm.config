@@ -55,7 +55,7 @@ setup_gitconfig()
     git config --global alias.unstage 'reset HEAD --'
     git config --global alias.last 'log -1 HEAD'
     git config --global alias.l "log --color --graph --decorate --pretty=oneline --abbrev-commit"
-    git config --global alias.log "log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '"
+    git config --global alias.lg "log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '"
 }
 
 err()
