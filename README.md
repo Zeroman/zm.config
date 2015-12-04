@@ -11,4 +11,4 @@ vimrc bashrc
 - F3 打开或关闭注释
 - F4 打开或关闭Tagbar
 - visual 模式下 ctrl + c，复制到系统剪贴板
-- insert 模式下 和 普通模式下支持 ctrl + v，粘贴系统剪贴板到光标处
+- insert 模式下 ctrl + v，粘贴系统剪贴板到光标处
