@@ -38,24 +38,52 @@ install_all()
     source $HOME/.bashrc
 }
 
+git_config()
+{
+    items=$1
+    shift
+    if [ ${items::5} = "alias" ];then
+        git config --global --unset-all $items
+    fi
+    git config --global $items "$@"
+}
+
 setup_gitconfig()
 {
-    git config --global status.showUntrackedFiles no
-    git config --global user.name "$ZM_AUTHOR"
-    git config --global user.email "$ZM_MAIL"
-    git config --global alias.co checkout
-    git config --global alias.br branch
-    git config --global alias.ci commit
-    git config --global alias.st status
-    git config --global alias.stu status -unormal
-    git config --global alias.df diff
-    git config --global alias.dfn diff --name-only
-    git config --global alias.up pull --recurse-submodules=yes
-    git config --global alias.dir rev-parse --show-toplevel
-    git config --global alias.unstage 'reset HEAD --'
-    git config --global alias.last 'log -1 HEAD'
-    git config --global alias.l "log --color --graph --decorate --pretty=oneline --abbrev-commit"
-    git config --global alias.lg "log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '"
+    git_config status.showUntrackedFiles no
+    git_config user.name "$ZM_AUTHOR"
+    git_config user.email "$ZM_MAIL"
+    git_config color.ui auto
+
+    git_config alias.co 'checkout'
+    git_config alias.br 'branch'
+    git_config alias.ci 'commit'
+    git_config alias.st 'status'
+    git_config alias.stu 'status -unormal'
+    git_config alias.df 'diff'
+    git_config alias.dfn 'diff --name-only'
+    git_config alias.up 'pull --recurse-submodules=yes'
+    git_config alias.dir 'rev-parse --show-toplevel'
+    git_config alias.unstage 'reset HEAD --'
+    git_config alias.last 'log -1 HEAD'
+    git_config alias.l "log --color --graph --decorate --pretty=oneline --abbrev-commit"
+    git_config alias.lg "log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%C(yellow)%an%Creset%Cgreen %cr)%Creset '"
+}
+
+setup_fonts()
+{
+    case ${OSTYPE} in
+        linux*)
+            ;;
+        darwin*)
+            ;;
+        cygwin)
+            mkdir ~/.fonts
+            ln -s $SYSTEMROOT/Fonts/msyh.ttf ~/.fonts/
+            ;;
+        *)
+            ;;
+    esac
 }
 
 err()
@@ -68,3 +96,4 @@ test -z "$1" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmai
 test -z "$2" && err "param error, $0 yourname yourmail, lile : $0 andy andy@gmail.com"
 install_all $1 $2
 setup_gitconfig
+setup_fonts

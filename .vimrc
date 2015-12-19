@@ -46,8 +46,7 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     Plugin 'Auto-Pairs'
     Plugin 'vcscommand.vim'
     " Plugin 'taglist.vim'
-    " Plugin 'gmarik/vundle'
-    Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
+    " Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
     Plugin 'ZenCoding.vim'
     Plugin 'IndentAnything'
     Plugin 'lekv/vim-clewn'
@@ -60,6 +59,7 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     Plugin 'DoxygenToolkit.vim'
     Plugin 'Valloric/ListToggle'
     Plugin 'python.vim--Vasiliev'
+    Plugin 'VundleVim/Vundle.vim'
     Plugin 'scrooloose/syntastic'
     " Plugin 'honza/vim-snippets'
     Plugin 'Shougo/neosnippet.git'
@@ -84,6 +84,10 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
 
     if exists("g:go_on")
         Plugin 'jnwhiteh/vim-golang.git'
+    endif
+
+    if exists("g:cs_on")
+        Plugin 'OmniSharp/omnisharp-vim'
     endif
 
     if exists("g:ycp_on")

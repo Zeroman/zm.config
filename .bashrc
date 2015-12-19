@@ -77,7 +77,7 @@ alias e='evince'
 alias f='find . -name'
 alias F='find . -iname'
 alias g='g++ *.cpp'
-alias k='kermit'
+alias k='ckermit'
 alias l='ls -hl --color=auto'
 alias n='netstat -n -t -u -p'
 alias p='cd ..'
@@ -190,7 +190,7 @@ elif [ -e /etc/arch-release ];then
     alias sr='$_SUDO pacman -R'
     alias srp='$_SUDO pacman -R'
     alias SL='$_SUDO pacman -Ql'
-	alias SS='$_SUDO pacman -Ss'
+	alias SS='pacman -Ss --color=auto'
 	alias au='$_SUDO pacman -Syu'
 	alias ag='$_SUDO pacman -Syu'
 fi
@@ -216,6 +216,18 @@ else
     alias vcp='vim -p --cmd "let g:ycp_on=1"'
     export EDITOR=vim
 fi
+
+case ${OSTYPE} in
+    linux*)
+        ;;
+    darwin*)
+        ;;
+    cygwin)
+        ;;
+    *)
+        ;;
+esac
+
 
 # venv_cd () {
    # cd "$@" && 
