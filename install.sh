@@ -54,6 +54,7 @@ setup_gitconfig()
     git_config user.name "$ZM_AUTHOR"
     git_config user.email "$ZM_MAIL"
     git_config color.ui auto
+    git_config credential.helper store
 
     git_config alias.co 'checkout'
     git_config alias.br 'branch'
