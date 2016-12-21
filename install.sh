@@ -28,10 +28,10 @@ install_all()
     cp_and_backup_file bin/gen_tags $HOME/bin/gen_tags
     chmod +x $HOME/bin/gen_tags
 
-    if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ];then
-        git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+    if [ ! -e "$HOME/.vim/autoload/plug.vim" ];then
+        curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     fi
-    vim "+BundleInstall" "+quitall"
+    vim "+PlugInstall" "+quitall"
 
     sed -i "s#ZM_AUTHOR=.*#ZM_AUTHOR='$author'#g" $HOME/.bashrc
     sed -i "s#ZM_MAIL=.*#ZM_MAIL='$mail'#g" $HOME/.bashrc

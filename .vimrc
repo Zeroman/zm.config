@@ -22,9 +22,113 @@ let g:mail = expand("$ZM_MAIL")
 let g:author = expand("$ZM_AUTHOR")
 
 
+""" plug Plugin
+if filereadable(glob("~/.vim/autoload/plug.vim"))
+    call plug#begin('~/.vim/plugged')
+
+    " Make sure you use single quotes
+
+    " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+    Plug 'junegunn/vim-easy-align'
+
+    " Any valid git URL is allowed
+    " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+    " Group dependencies, vim-snippets depends on ultisnips
+    " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+    " On-demand loading
+    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+    " Using a non-master branch
+    " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+    " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+    Plug 'fatih/vim-go', { 'for': 'go' }
+    " Plug 'fatih/vim-go', { 'tag': '*', 'for': 'go' }
+    " Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs' }
+
+    " Plugin options
+    " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+    " Plugin outside ~/.vim/plugged with post-update hook
+    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+    Plug 'a.vim'
+    Plug 'cpp.vim' 
+    Plug 'xml.vim'
+    Plug 'mru.vim'
+    Plug 'txt2tags'
+    Plug 'cocoa.vim'
+    Plug 'pydoc.vim'
+    Plug 'ShowMarks'
+    Plug 'Auto-Pairs'
+    Plug 'vcscommand.vim'
+    " Plug 'taglist.vim'
+    Plug 'ZenCoding.vim'
+    Plug 'IndentAnything'
+    Plug 'lekv/vim-clewn'
+    Plug 'kien/ctrlp.vim'
+    Plug 'OmniCppComplete'
+    Plug 'bash-support.vim'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'majutsushi/tagbar'
+    Plug 'tpope/vim-surround'
+    Plug 'DoxygenToolkit.vim'
+    Plug 'Valloric/ListToggle'
+    Plug 'python.vim--Vasiliev'
+    Plug 'scrooloose/syntastic'
+    " Plug 'honza/vim-snippets'
+    Plug 'flazz/vim-colorschemes'
+    Plug 'Yggdroot/indentLine'
+    " Plug 'code_complete-new-update'
+    Plug 'mbbill/code_complete'
+    Plug 'skammer/vim-css-color'
+    Plug 'scrooloose/nerdcommenter'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'suan/vim-instant-markdown'
+    Plug 'tpope/vim-dispatch'
+
+    " Plug 'Lokaltog/vim-powerline'
+    " Plug 'fholgado/minibufexpl.vim.git'
+    " Plug 'Zeroman/minibufexpl.vim.git'
+    Plug 'jeetsukumaran/vim-buffergator'
+
+    if exists("g:js_on")
+        Plug 'html5.vim'
+        Plug 'jsbeautify'
+        Plug 'JavaScript-syntax'
+        Plug 'hallettj/jslint.vim'
+        Plug 'Javascript-Indentation'
+        Plug 'ternjs/tern_for_vim'
+    endif
+
+    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+
+    Plug 'Shougo/neosnippet'
+    Plug 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/neocomplcache'
+
+    Plug 'davidhalter/jedi-vim', {'for': 'python' }
+     
+    " Plug 'Valloric/YouCompleteMe', { 'do': './install.py', 'for': 'cpp' }
+    Plug 'Valloric/YouCompleteMe', { 'dir': '/work/src/git/YouCompleteMe/', 'for': 'cpp' }
+    " Plug 'Valloric/YouCompleteMe', { 'dir': '/work/src/git/YouCompleteMe/', 'for': 'python' }
+    " Plug 'Valloric/YouCompleteMe', { 'dir': '/work/src/git/YouCompleteMe/' }
+
+    " Unmanaged plugin (manually installed and updated)
+    " Plug '~/my-prototype-plugin'
+
+    " Add plugins to &runtimepath
+    call plug#end()
+endif
+
+
 """ Vundle Plugin
 " git clone --depth=1 https://github.com/Zemnmez/Vundle.vim.git ~/.vim/bundle/vundle
-" git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     set nocompatible              " be iMproved, required
     filetype off                  " required
@@ -33,7 +137,9 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
     " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
+    " call vundle#begin('~/some/path/here')
+    Plugin 'VundleVim/Vundle.vim'
+    " Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
 
     Plugin 'a.vim'
     Plugin 'cpp.vim' 
@@ -46,7 +152,6 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     Plugin 'Auto-Pairs'
     Plugin 'vcscommand.vim'
     " Plugin 'taglist.vim'
-    " Plugin 'Zemnmez/Vundle.vim' "support git clone --depth=1
     Plugin 'ZenCoding.vim'
     Plugin 'IndentAnything'
     Plugin 'lekv/vim-clewn'
@@ -59,20 +164,25 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     Plugin 'DoxygenToolkit.vim'
     Plugin 'Valloric/ListToggle'
     Plugin 'python.vim--Vasiliev'
-    Plugin 'VundleVim/Vundle.vim'
     Plugin 'scrooloose/syntastic'
     " Plugin 'honza/vim-snippets'
     Plugin 'Shougo/neosnippet.git'
     Plugin 'Shougo/neosnippet-snippets'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'Yggdroot/indentLine.git'
-    Plugin 'code_complete-new-update'
+    " Plugin 'code_complete-new-update'
+    Plugin 'mbbill/code_complete'
     Plugin 'skammer/vim-css-color.git'
     Plugin 'scrooloose/nerdcommenter.git'
+    " Plugin 'vim-airline/vim-airline'
+    " Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'suan/vim-instant-markdown'
+    Plugin 'tpope/vim-dispatch'
 
-    " Plugin "Lokaltog/vim-powerline"
+    " Plugin 'Lokaltog/vim-powerline'
     " Plugin 'fholgado/minibufexpl.vim.git'
     " Plugin 'Zeroman/minibufexpl.vim.git'
+    Plugin 'jeetsukumaran/vim-buffergator'
 
     if exists("g:js_on")
         Plugin 'html5.vim'
@@ -83,7 +193,7 @@ if isdirectory(glob("~/.vim/bundle/Vundle.vim"))
     endif
 
     if exists("g:go_on")
-        Plugin 'jnwhiteh/vim-golang.git'
+        Plugin 'fatih/vim-go'
     endif
 
     if exists("g:cs_on")
@@ -625,6 +735,13 @@ autocmd InsertLeave * call Fcitx2en()
 """" Others
 " set spell spelllang=en_us "美国英文
 
+" set cul " highlight current line
+" highlight clear SignColumn      " SignColumn should match background for
+" things like vim-gitgutter, vim-signify
+" highlight clear LineNr          " Current line number row will have same background color in relative mode.
+
+
+
 """ Plugin Settings
 """" Common Settings
 let lisp_rainbow=1          " Color parentheses by depth in LISP files.
@@ -689,7 +806,7 @@ let g:showmarks_include="abcdefghijklmnopqrstuvwxyz"
 " let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
 """" for neocomplcache
-if isdirectory(glob("~/.vim/bundle/neocomplcache"))
+if isdirectory(glob("~/.vim/plugged/neocomplcache"))
 	" Disable AutoComplPop.
 	let g:acp_enableAtStartup = 0
 	" Use neocomplcache.
@@ -847,7 +964,7 @@ let VCSCommandMapPrefix='<Leader>v'
 
 
 """" for tagbar
-if isdirectory(glob("~/.vim/bundle/tagbar"))
+if isdirectory(glob("~/.vim/plugged/tagbar"))
     nnoremap <silent> <F4> :TagbarToggle<CR>
     let g:tagbar_singleclick = 1
     " autocmd VimEnter * nested :call tagbar#autoopen(1)
@@ -895,6 +1012,14 @@ else
 endif
 syntax enable
 " colorscheme solarized
+
+
+"""" for EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 """ Autocommands
 if has("autocmd")
@@ -957,7 +1082,7 @@ if has("autocmd")
 endif
 
 """ Colorscheme
-if isdirectory(glob("~/.vim/bundle/vim-colorschemes/"))
+if isdirectory(glob("~/.vim/plugged/vim-colorschemes/"))
     " if $background == "light" && (&t_Co > 16 || has('gui_running'))
     " colorscheme autumnleaf  " 256 color light scheme
     " elseif $background == "light"
@@ -971,7 +1096,7 @@ if isdirectory(glob("~/.vim/bundle/vim-colorschemes/"))
     " colorscheme torte       " 16 color dark scheme
     " endif
     " hi Pmenu guibg=#010101 guifg=#ffccff
-    colorscheme BlackSea " 256 color dark scheme
+    colorscheme Benokai " 256 color dark scheme
 endif
 
 """ Key Mappings
